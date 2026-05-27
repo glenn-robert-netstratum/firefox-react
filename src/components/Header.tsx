@@ -1,3 +1,5 @@
+import { Input } from "./ui/input"
+
 function Header() {
   return (
     <div className="flex items-center gap-2 p-4 text-white">
@@ -10,6 +12,9 @@ function Header() {
       <h1 className="text-xl font-bold">
         Firefox
       </h1>
+      <div>
+        <Input/>
+      </div>
     </div>
   )
 }
