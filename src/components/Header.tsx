@@ -1,4 +1,4 @@
-import { Input } from "./ui/input"
+import SearchBar from "./Searchbar"
 
 function Header() {
   return (
@@ -6,14 +6,14 @@ function Header() {
       <img
         src="https://upload.wikimedia.org/wikipedia/commons/a/a0/Firefox_logo%2C_2019.svg"
         alt="Firefox Logo"
-        className="h-8 w-8"
+        className="h-15 w-15 mb-20 "
       />
 
-      <h1 className="text-xl font-bold">
+      <h1 className="text-4xl font-bold mb-20 ">
         Firefox
       </h1>
-      <div>
-        <Input/>
+      <div className=" flex justify-center w-300">
+        <SearchBar/>
       </div>
     </div>
   )
