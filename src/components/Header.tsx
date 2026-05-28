@@ -12,7 +12,7 @@ function Header() {
       <h1 className="text-4xl font-bold mb-20 ">
         Firefox
       </h1>
-      <div className=" flex justify-center w-300">
+      <div className=" flex justify-center w-280 ">
         <SearchBar/>
       </div>
     </div>
