@@ -1,6 +1,14 @@
 import SearchBar from "./Searchbar"
 
-function Header() {
+interface HeaderProps {
+  search: string
+
+  setSearch: React.Dispatch<
+    React.SetStateAction<string>
+  >
+}
+
+function Header({search,setSearch,}: HeaderProps) {
   return (
     <div className="flex items-center gap-2 p-4 text-white">
       <img
@@ -13,7 +21,8 @@ function Header() {
         Firefox
       </h1>
       <div className=" flex justify-center w-280 ">
-        <SearchBar/>
+        <SearchBar search={search}
+          setSearch={setSearch}/>
       </div>
     </div>
   )
