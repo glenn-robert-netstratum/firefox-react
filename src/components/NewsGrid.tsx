@@ -15,7 +15,7 @@ interface Article {
   source_name:string
 }
 
-function NewsGrid() {
+function NewsGrid({search,}: { search: string}) {
   const [news, setNews] = useState<Article[]>([])
   useEffect(()=>{
     async function fetchNews() {
@@ -28,12 +28,19 @@ function NewsGrid() {
     }
     fetchNews()
   },[])
+
+  const filteredNews = news.filter(
+    (article) =>
+
+      article.title ?.toLowerCase().includes(search.toLowerCase())
+  )
+
   return (
     <div className="mt-25 flex justify-center">
   
         <div className="flex items-start justify-between gap-20 flex-wrap w-7xl p-15">
   
-          {news.map((article) => (
+          {filteredNews.map((article) => (
   
             <Card
               key={article.title}
@@ -46,7 +53,7 @@ function NewsGrid() {
                 <img
                   src={article.image_url}
                   alt={article.title}
-                  className="h-30 w-70"
+                  className="h-40 w-70"
                 />
   
                 <p className="text-sm">

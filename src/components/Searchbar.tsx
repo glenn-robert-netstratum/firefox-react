@@ -1,6 +1,13 @@
 import { Input } from "./ui/input"
 
-function SearchBar() {
+interface SearchBarProps {
+  search: string
+  setSearch: React.Dispatch<
+    React.SetStateAction<string>
+  >
+}
+
+function SearchBar({search,setSearch}: SearchBarProps) {
   return (
     <div className="flex justify-center mt-4">
       <div className="w-full flex gap-4 mt-8 bg-zinc-700 items-center justify-center p-2 rounded-2xl">
@@ -11,6 +18,10 @@ function SearchBar() {
         />
         
         <Input
+          value={search}
+          onChange={(e) =>
+            setSearch(e.target.value)
+          }
           placeholder="Search with Google or enter address"
           className="bg-zinc-700
            border-zinc-700
