@@ -19,7 +19,7 @@ function ModalOverlay({isOpen,onClose,title,setTitle,url,setUrl,image,setImage,o
     >
 
         <div
-        className="relative w-[600px] rounded-xl bg-white text-black"
+        className="relative rounded-xl bg-white text-black"
         onClick={(e) => e.stopPropagation()}
         >
 

@@ -134,7 +134,7 @@ function ShortcutGrid() {
 
           <Card onClick={() => window.open(shortcut.url)}
             key={shortcut.id}
-            className="relative flex items-center justify-center h-20 w-20 border-none text-white hover:scale-120 hover:bg-black backdrop-blur-3xl backdrop-grayscale-30 transition cursor-pointer"
+            className="relative flex items-center justify-center h-20 w-20 border-none hover:scale-120 hover:bg-black hover:text-white bg-white/70 transition cursor-pointer"
           >
 
             <CardContent className="absolute flex flex-col items-center gap-2">
@@ -185,8 +185,8 @@ function ShortcutGrid() {
 
         ))}
         <Card onClick={() => setShowModal(true)}
-        className="relative flex items-center justify-center h-20 w-20 border-none text-white hover:bg-black hover:scale-120 backdrop-blur-3xl backdrop-grayscale-30 transition cursor-pointer">
-          <div className="text-5xl  mb-5">+</div> 
+        className="relative flex items-center justify-center h-20 w-20 border-none hover:scale-120 hover:bg-black hover:text-white bg-white/70 transition cursor-pointer">
+          <div className="text-4xl pb-1">+</div> 
         </Card>
 
       </div>
