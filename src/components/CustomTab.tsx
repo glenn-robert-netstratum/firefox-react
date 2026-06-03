@@ -23,23 +23,6 @@ function CustomTab({
   newsEnabled,
   setNewsEnabled
 }: CustomTabProps) {
-  const shortcut_grid = document.getElementById("shortcut-grid");
-
-  const handleShortcuts = () => {
-    if (shortcut_grid) {
-        const display_class = shortcut_grid.style.display
-
-        
-        if(display_class.includes('none'))
-        {
-            shortcut_grid.style.display = "flex";
-        }
-        else{
-            shortcut_grid.style.display = "none";
-        }
-      
-    }
-  };
   return (
     <Drawer direction="right">
       <DrawerTrigger asChild>
