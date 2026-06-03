@@ -126,7 +126,7 @@ function ShortcutGrid() {
     }
   }
   return (
-    <div className="mt-8 flex justify-center">
+    <div id="shortcut-grid" className="mt-8 flex justify-center">
 
       <div className="flex gap-15">
 

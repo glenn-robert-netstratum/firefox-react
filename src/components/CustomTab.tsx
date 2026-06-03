@@ -8,13 +8,38 @@ interface CustomTabProps {
   setBackground: React.Dispatch<React.SetStateAction<string>>;
   wallpaperEnabled: boolean;
   setWallpaperEnabled: React.Dispatch<React.SetStateAction<boolean>>;
+  shortcutEnabled: boolean;
+  setShortcutEnabled: React.Dispatch<React.SetStateAction<boolean>>;
+  newsEnabled: boolean;
+  setNewsEnabled: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 function CustomTab({
   setBackground,
   wallpaperEnabled,
   setWallpaperEnabled,
+  shortcutEnabled,
+  setShortcutEnabled,
+  newsEnabled,
+  setNewsEnabled
 }: CustomTabProps) {
+  const shortcut_grid = document.getElementById("shortcut-grid");
+
+  const handleShortcuts = () => {
+    if (shortcut_grid) {
+        const display_class = shortcut_grid.style.display
+
+        
+        if(display_class.includes('none'))
+        {
+            shortcut_grid.style.display = "flex";
+        }
+        else{
+            shortcut_grid.style.display = "none";
+        }
+      
+    }
+  };
   return (
     <Drawer direction="right">
       <DrawerTrigger asChild>
@@ -42,7 +67,6 @@ function CustomTab({
               id="wallpaper-toggle"
               checked={wallpaperEnabled}
               onCheckedChange={setWallpaperEnabled}
-            
             />
           </div>
           <div className="  flex flex-wrap p-4 gap-3 border-b-2">
@@ -98,6 +122,19 @@ function CustomTab({
           </div>
           <div className=" flex items-center justify-between p-4">
             <p className=" text-xl">Shortcuts</p>
+            <Switch
+              id="shortcut-toggle"
+              checked={shortcutEnabled}
+              onCheckedChange={setShortcutEnabled}
+            />
+          </div>
+          <div className=" flex items-center justify-between p-4">
+            <p className=" text-xl">News</p>
+            <Switch
+              id="news-toggle"
+              checked={newsEnabled}
+              onCheckedChange={setNewsEnabled}
+            />
           </div>
         </div>
       </DrawerContent>

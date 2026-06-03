@@ -7,6 +7,8 @@ import CustomTab from "./components/CustomTab"
 function App() {
   const [search, setSearch]=useState("")
   const [wallpaperEnabled,setWallpaperEnabled] = useState(true)
+  const [shortcutEnabled,setShortcutEnabled] = useState(true)
+  const [newsEnabled,setNewsEnabled] = useState(true)
   const [background,setBackground]=useState(
     localStorage.getItem("background") || "https://images.hdqwalls.com/download/land-rover-defender-octa-2025-pp-1366x768.jpg"
   )
@@ -18,12 +20,16 @@ function App() {
       style={{ backgroundImage: wallpaperEnabled ? `url(${background})` : "none" }}>
       <Header search={search}
         setSearch={setSearch} />
-      <ShortcutGrid />
-      <NewsGrid search={search} />
+      {shortcutEnabled && (<ShortcutGrid />)}
+      {newsEnabled && <NewsGrid search={search} />}
       <CustomTab background={background}
       setBackground={setBackground}
       wallpaperEnabled={wallpaperEnabled}
-      setWallpaperEnabled={setWallpaperEnabled}/>
+      setWallpaperEnabled={setWallpaperEnabled}
+      shortcutEnabled={shortcutEnabled}
+      setShortcutEnabled={setShortcutEnabled}
+      newsEnabled={newsEnabled}
+      setNewsEnabled={setNewsEnabled}/>
     </div>
   )
 }
