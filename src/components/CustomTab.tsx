@@ -11,7 +11,6 @@ interface CustomTabProps {
 }
 
 function CustomTab({
-  background,
   setBackground,
   wallpaperEnabled,
   setWallpaperEnabled,
