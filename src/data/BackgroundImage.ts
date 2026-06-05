@@ -1,26 +1,26 @@
 export const backgroundImage = [
   {
     id: 1,
-    url:"https://4kwallpapers.com/images/walls/thumbs_3t/10681.jpg"
+    url:"https://images.unsplash.com/photo-1600268330186-76564be81357"
   },
 
   {
     id: 2,
-    url:"https://4kwallpapers.com/images/walls/thumbs_3t/16850.jpg"
+    url:"https://images.unsplash.com/photo-1728060838443-691dc6279245"
   },
 
   {
     id: 3,
-    url: "https://4kwallpapers.com/images/walls/thumbs_3t/14632.jpg"
+    url: "https://images.unsplash.com/photo-1738796906434-04571bfb91de"
   },
 
   {
     id: 4,
-    url: "https://4kwallpapers.com/images/walls/thumbs_3t/8849.jpg"
+    url: "https://images.unsplash.com/photo-1503376780353-7e6692767b70"
   },
 
   {
     id: 5,
-    url:"https://4kwallpapers.com/images/walls/thumbs_3t/19687.png"
+    url:"https://images.unsplash.com/photo-1711962842423-28f28b5bbf1d"
   }
 ]
