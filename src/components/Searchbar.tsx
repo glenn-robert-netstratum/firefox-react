@@ -9,12 +9,11 @@ interface SearchBarProps {
 
 function SearchBar({search,setSearch}: SearchBarProps) {
   return (
-    <div className="flex justify-center mt-4">
       <div className="w-full flex gap-4 mt-8 bg-zinc-700 items-center justify-center p-2 rounded-2xl">
         <img
           src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg"
           alt="Google Logo"
-          className="h-5 w-20"
+          className="h-5 pl-2"
         />
         
         <Input
@@ -35,7 +34,6 @@ function SearchBar({search,setSearch}: SearchBarProps) {
             shadow-none"
         />
       </div>
-    </div>
   )
 }
 

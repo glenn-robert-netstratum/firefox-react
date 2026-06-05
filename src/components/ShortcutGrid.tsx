@@ -27,13 +27,17 @@ function ShortcutGrid() {
   const [url, setUrl] = useState("")
   const [image, setImage] = useState("")
   const [editingId, setEditingId] = useState<number | null>(null)
+  const [activeDropdown,setActiveDropdown] = useState<number | null>(null)
   const [shortcuts, setShortcuts] = useState<Shortcut[]>(() => {
 
     const storedShortcuts =
       localStorage.getItem("shortcuts")
 
     if (storedShortcuts) {
-      return JSON.parse(storedShortcuts) as Shortcut[]
+      const parsedShortcuts = JSON.parse(storedShortcuts) as Shortcut[]
+      if (parsedShortcuts.length > 0) {
+        return parsedShortcuts
+      }
     }
 
     localStorage.setItem(
@@ -79,12 +83,9 @@ function ShortcutGrid() {
   
   function addShortcut() {
     if (editingId !== null) {
-
       const updatedShortcuts =
         shortcuts.map((shortcut) =>
-
-          shortcut.id === editingId
-            ? {
+          shortcut.id === editingId ? {
                 ...shortcut,
 
                 name: title,
@@ -103,11 +104,8 @@ function ShortcutGrid() {
 
       const newShortcut = {
         id: Date.now(),
-
         name: title,
-
         url,
-
         image:
           image ||
           "https://cdn-icons-png.flaticon.com/512/25/25694.png",
@@ -126,7 +124,7 @@ function ShortcutGrid() {
     }
   }
   return (
-    <div id="shortcut-grid" className="mt-8 flex justify-center">
+    <div id="shortcut-grid" className="mt-15 flex justify-center">
 
       <div className="flex gap-15">
 
@@ -134,15 +132,18 @@ function ShortcutGrid() {
 
           <Card onClick={() => window.open(shortcut.url)}
             key={shortcut.id}
-            className="relative flex items-center justify-center h-20 w-20 border-none hover:scale-120 hover:bg-black hover:text-white bg-white/70 transition cursor-pointer"
-          >
+            className={`relative flex items-center justify-center h-20 w-20 border-none hover:scale-120 hover:bg-black hover:text-white bg-white/70 transition cursor-pointer
+            ${
+              activeDropdown ===
+              shortcut.id ? "bg-black text-white scale-120" : ""
+            }`}>
 
-            <CardContent className="absolute flex flex-col items-center gap-2">
+            <CardContent className="absolute flex flex-col items-center pt-2">
 
               <img
                 src={shortcut.image}
                 alt={shortcut.name}
-                className="h-8 w-8"
+                className="h-8 "
               />
 
               <p className="text-sm flex justify-center items-center">
@@ -153,17 +154,24 @@ function ShortcutGrid() {
             <div className="absolute flex items-center justify-center right-1 pb-2 top-0 h-5 w-5"
             onClick={(e) => e.stopPropagation()}>
 
-              <DropdownMenu>
+              <DropdownMenu 
+              onOpenChange={(open) => {
+                    if (open) {
+                      setActiveDropdown(shortcut.id)
+                    } else {
+                      setActiveDropdown(null)
+                    }
+                  }}>
 
                 <DropdownMenuTrigger>
 
-                  <button className="flex h-8 w-8 items-center justify-center pb-2 text-xl font-bold  text-white">
+                  <div className="flex h-8 w-8 items-center justify-center pr-2 text-xl font-bold ">
                     ...
-                  </button>
+                  </div>
 
                 </DropdownMenuTrigger>
 
-                <DropdownMenuContent className="bg-black text-white">
+                <DropdownMenuContent className="bg-black text-white border-2 border-white">
 
                   <DropdownMenuItem className="hover:bg-zinc-700"
                    onClick={() => editShortcut(shortcut)}>
@@ -201,7 +209,12 @@ function ShortcutGrid() {
         image={image}
         setImage={setImage}
         isOpen={showModal} 
-        onClose={() => setShowModal(false)} 
+        onClose={() => {
+          setShowModal(false)
+          setTitle("")
+          setUrl("")
+          setImage("")
+        }}
         onAdd={addShortcut}
       />
 
